@@ -1,0 +1,36 @@
+<!ELEMENT dataset (
+        customers*,
+        travels*,
+        orders*
+        )>
+
+<!ELEMENT customers EMPTY>
+<!ATTLIST customers
+        id CDATA #REQUIRED
+        first_name CDATA #REQUIRED
+        last_name CDATA #REQUIRED
+        email CDATA #REQUIRED
+        age CDATA #REQUIRED
+        created CDATA #REQUIRED>
+
+<!ELEMENT travels EMPTY>
+<!ATTLIST travels
+        id CDATA #REQUIRED
+        travel_code CDATA #REQUIRED
+        name CDATA #REQUIRED
+        description CDATA #REQUIRED
+        starting_city CDATA #REQUIRED
+        destination_city CDATA #REQUIRED
+        guided_tour CDATA #REQUIRED
+        cost CDATA #REQUIRED
+        guide CDATA #IMPLIED
+        travel_type CDATA #REQUIRED>
+
+<!ELEMENT orders EMPTY>
+<!ATTLIST orders
+        id CDATA #REQUIRED
+        customer_id CDATA #REQUIRED
+        travel_id CDATA #REQUIRED
+        start_date CDATA #REQUIRED
+        end_date CDATA #REQUIRED
+        active CDATA #IMPLIED>

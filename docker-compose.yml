@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb:10.4.8
+    environment:
+      - "MYSQL_ROOT_PASSWORD=development"
+      - "MYSQL_DATABASE=travelapp"
+      - "MYSQL_USER=admin"
+      - "MYSQL_PASSWORD=5asd6423432g67523sad"
+    ports:
+      - 3306:3306
+    volumes:
+      - travelapp:/var/lib/mysql
+volumes:
+  travelapp:

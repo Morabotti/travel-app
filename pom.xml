@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>fi.jubic</groupId>
+        <artifactId>snoozy-starter-jooq</artifactId>
+        <version>0.4.2</version>
+    </parent>
+
+    <groupId>fi.morabotti</groupId>
+    <artifactId>travelapp</artifactId>
+    <version>0.1.0</version>
+    <packaging>jar</packaging>
+
+    <name>travel-app</name>
+    <description>School project with Snoozy</description>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <repositories>
+        <repository>
+            <id>bintray-jcenter</id>
+            <name>Bintray JCenter</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <snoozy.mainClass>fi.morabotti.travelapp.Application</snoozy.mainClass>
+        <snoozy.jooq.jdbcUrl>jdbc:mysql://localhost:3306/travelapp</snoozy.jooq.jdbcUrl>
+        <snoozy.jooq.jdbcDriver>com.mysql.jdbc.Driver</snoozy.jooq.jdbcDriver>
+        <snoozy.jooq.user>test</snoozy.jooq.user>
+        <snoozy.jooq.password>test</snoozy.jooq.password>
+        <snoozy.jooq.databaseMetaName>org.jooq.meta.mysql.MySQLDatabase</snoozy.jooq.databaseMetaName>
+        <snoozy.jooq.includes>.*</snoozy.jooq.includes>
+        <snoozy.jooq.excludes>
+            DATABASECHANGELOG
+            | DATABASECHANGELOGLOCK
+        </snoozy.jooq.excludes>
+        <snoozy.jooq.inputSchema>travelapp</snoozy.jooq.inputSchema>
+        <snoozy.jooq.targetPackage>fi.morabotti.travelapp.db</snoozy.jooq.targetPackage>
+    </properties>
+</project>

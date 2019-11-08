@@ -1,0 +1,15 @@
+*.iml
+.idea
+.vscode
+*dependency-reduced-pom.xml
+*target
+*node_modules
+*.swp
+*npm-debug.log
+*build
+*dist
+.attach*
+.project
+.classpath
+.settings/
+.factorypath

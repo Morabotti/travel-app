@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="1" author="Jesse Batman">
+        <createTable tableName="customers">
+            <column name="id" type="bigint" autoIncrement="true" startWith="1">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="age" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="created" type="datetime" defaultValueComputed="now()">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createTable tableName="travels">
+            <column name="id" type="bigint" autoIncrement="true" startWith="1">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="travel_code" type="varchar(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="false" />
+            </column>
+            <column name="starting_city" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="destination_city" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="guided_tour" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="cost" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="guide" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="travel_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+        <createTable tableName="orders">
+            <column name="id" type="bigint" autoIncrement="true" startWith="1">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="customer_id" type="int">
+                <constraints
+                    foreignKeyName="fk_orders_customer_id"
+                    references="customers(id)"
+                    unique="true"
+                    nullable="false"
+                />
+            </column>
+            <column name="travel_id" type="int">
+                <constraints
+                    foreignKeyName="fk_orders_travel_id"
+                    references="travels(id)"
+                    unique="true"
+                    nullable="false"
+                />
+            </column>
+            <column name="start_date" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="end_date" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="active" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
