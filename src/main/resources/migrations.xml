@@ -61,19 +61,17 @@
             <column name="id" type="bigint" autoIncrement="true" startWith="1">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="customer_id" type="int">
+            <column name="customer_id" type="bigint">
                 <constraints
                     foreignKeyName="fk_orders_customer_id"
                     references="customers(id)"
-                    unique="true"
                     nullable="false"
                 />
             </column>
-            <column name="travel_id" type="int">
+            <column name="travel_id" type="bigint">
                 <constraints
                     foreignKeyName="fk_orders_travel_id"
                     references="travels(id)"
-                    unique="true"
                     nullable="false"
                 />
             </column>

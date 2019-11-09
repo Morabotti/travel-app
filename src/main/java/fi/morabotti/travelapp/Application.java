@@ -8,17 +8,24 @@ import fi.jubic.easyschedule.StartupScheduler;
 import fi.jubic.easyschedule.liquibase.LiquibaseTask;
 import fi.jubic.easyschedule.dbunit.DbUnitTask;
 import fi.jubic.snoozy.undertow.UndertowServer;
+import fi.jubic.snoozy.Snoozy;
+import fi.morabotti.travelapp.resources.*;
 
+import java.util.stream.Collectors;
 import javax.ws.rs.ApplicationPath;
 import javax.inject.Inject;
 
 import java.util.Set;
 import java.util.Collections;
+import java.util.stream.Stream;
 
 @ApplicationPath("/api")
 public class Application extends fi.jubic.snoozy.Application {
     @Inject
     Configuration config;
+
+    @Inject
+    CustomerResource customerResource;
 
     @Inject
     Application() { }
@@ -39,6 +46,17 @@ public class Application extends fi.jubic.snoozy.Application {
                         .build()
         );
     }
+
+    @Override
+    public Set<Object> getSingletons() {
+        return Stream.concat(
+                Stream.of(
+                        customerResource
+                ),
+                Snoozy.builtins().stream()
+        ).collect(Collectors.toSet());
+    }
+
 
     public static void main(String[] args) {
         Application application = DaggerApplicationComponent

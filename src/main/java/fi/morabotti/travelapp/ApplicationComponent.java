@@ -10,9 +10,7 @@ import fi.jubic.easyconfig.MappingException;
 import javax.inject.Singleton;
 
 @Singleton
-@Component(modules = {
-        ApplicationComponent.ApplicationModule.class
-})
+@Component(modules = ApplicationComponent.ApplicationModule.class)
 public interface ApplicationComponent {
     Application getApplication();
 

@@ -16,32 +16,25 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
 
-    <name>travel-app</name>
-    <description>School project with Snoozy</description>
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
     <repositories>
         <repository>
-            <id>bintray-jcenter</id>
-            <name>Bintray JCenter</name>
-            <url>http://jcenter.bintray.com</url>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
         </repository>
     </repositories>
 
     <properties>
         <snoozy.mainClass>fi.morabotti.travelapp.Application</snoozy.mainClass>
-        <snoozy.jooq.jdbcUrl>jdbc:mysql://localhost:3306/travelapp</snoozy.jooq.jdbcUrl>
+        <snoozy.jooq.jdbcUrl>jdbc:mysql://127.0.0.1:3306/travelapp</snoozy.jooq.jdbcUrl>
         <snoozy.jooq.jdbcDriver>com.mysql.jdbc.Driver</snoozy.jooq.jdbcDriver>
-        <snoozy.jooq.user>test</snoozy.jooq.user>
-        <snoozy.jooq.password>test</snoozy.jooq.password>
+        <snoozy.jooq.user>root</snoozy.jooq.user>
+        <snoozy.jooq.password />
         <snoozy.jooq.databaseMetaName>org.jooq.meta.mysql.MySQLDatabase</snoozy.jooq.databaseMetaName>
-        <snoozy.jooq.includes>.*</snoozy.jooq.includes>
+        <snoozy.jooq.includes>
+            customers
+            | travels
+            | orders
+        </snoozy.jooq.includes>
         <snoozy.jooq.excludes>
             DATABASECHANGELOG
             | DATABASECHANGELOGLOCK
