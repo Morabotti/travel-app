@@ -82,7 +82,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="active" type="boolean" defaultValueBoolean="1">
-                <constraints nullable="false" />
+                <constraints />
             </column>
         </createTable>
     </changeSet>

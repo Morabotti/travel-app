@@ -7,6 +7,7 @@ import dagger.Provides;
 import fi.jubic.easyconfig.ConfigMapper;
 import fi.jubic.easyconfig.MappingException;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
