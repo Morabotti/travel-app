@@ -6,7 +6,7 @@
 
 <!ELEMENT customers EMPTY>
 <!ATTLIST customers
-        id CDATA #REQUIRED
+        id CDATA #IMPLIED
         first_name CDATA #REQUIRED
         last_name CDATA #REQUIRED
         email CDATA #REQUIRED
@@ -15,7 +15,7 @@
 
 <!ELEMENT travels EMPTY>
 <!ATTLIST travels
-        id CDATA #REQUIRED
+        id CDATA #IMPLIED
         travel_code CDATA #REQUIRED
         name CDATA #REQUIRED
         description CDATA #REQUIRED
@@ -28,7 +28,7 @@
 
 <!ELEMENT orders EMPTY>
 <!ATTLIST orders
-        id CDATA #REQUIRED
+        id CDATA #IMPLIED
         customer_id CDATA #REQUIRED
         travel_id CDATA #REQUIRED
         start_date CDATA #REQUIRED

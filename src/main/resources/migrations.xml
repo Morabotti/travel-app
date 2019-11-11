@@ -81,7 +81,7 @@
             <column name="end_date" type="datetime">
                 <constraints nullable="false" />
             </column>
-            <column name="active" type="boolean" defaultValueBoolean="true">
+            <column name="active" type="boolean" defaultValueBoolean="1">
                 <constraints nullable="false" />
             </column>
         </createTable>

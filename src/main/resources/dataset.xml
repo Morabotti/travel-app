@@ -1,22 +1,20 @@
 <!DOCTYPE dataset SYSTEM "dataset.dtd">
 <dataset>
-    <customers id="1" first_name="Jesse" last_name="Batman" email="jesse.batman@outlook.com" age="21" created="2018-01-01 00:00:01"/>
-    <customers id="2" first_name="Esa" last_name="Esimerkki" email="esa.esimerkki@outlook.com" age="23" created="2018-06-01 00:00:10"/>
-    <customers id="3" first_name="Pekka" last_name="Pylväs" email="pekka.pylvas@outlook.com" age="24" created="2018-06-01 00:00:10"/>
+    <customers first_name="Jesse" last_name="Batman" email="jesse.batman@outlook.com" age="21" created="2018-01-01 00:00:01"/>
+    <customers first_name="Esa" last_name="Esimerkki" email="esa.esimerkki@outlook.com" age="23" created="2018-06-01 00:00:10"/>
+    <customers first_name="Pekka" last_name="Pylväs" email="pekka.pylvas@outlook.com" age="24" created="2018-06-01 00:00:10"/>
 
     <travels
-            id="1"
             travel_code="kulttuurirooma19"
             name="Antiikkimatka Roomaan"
             description="Sisältää opastetun kierroksen Forum Romanumille."
             starting_city="Helsinki"
             destination_city="Rooma"
-            guided_tour="0"
+            guided_tour="1"
             cost="400"
             travel_type="kulttuuri"
     />
     <travels
-            id="2"
             travel_code="pohjoinenvalo2020"
             name="Laskettelumatka lappiin"
             description="Koko perhe laskettelemaan lappiin halvalla."
@@ -27,7 +25,7 @@
             travel_type="urheilu"
     />
 
-    <orders id="1" customer_id="1" travel_id="2" start_date="2019-10-05 00:00:10" end_date="2019-10-08 00:00:10" />
-    <orders id="2" customer_id="1" travel_id="1" start_date="2019-10-07 00:00:11" end_date="2019-10-11 00:00:10" />
-    <orders id="3" customer_id="2" travel_id="1" start_date="2019-10-09 00:00:12" end_date="2019-10-12 00:00:10" />
+    <orders customer_id="1" travel_id="2" start_date="2019-10-05 00:00:10" end_date="2019-10-08 00:00:10" active="true" />
+    <orders customer_id="1" travel_id="1" start_date="2019-10-07 00:00:11" end_date="2019-10-11 00:00:10" active="true" />
+    <orders customer_id="2" travel_id="1" start_date="2019-10-09 00:00:12" end_date="2019-10-12 00:00:10" active="false" />
 </dataset>

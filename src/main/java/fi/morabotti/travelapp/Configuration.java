@@ -1,5 +1,6 @@
 package fi.morabotti.travelapp;
 
+import fi.jubic.easyconfig.snoozy.SnoozyServerConfiguration;
 import fi.jubic.snoozy.ServerConfigurator;
 import fi.jubic.easyconfig.annotations.EasyConfigProperty;
 import fi.jubic.easyconfig.jooq.JooqConfiguration;
@@ -15,7 +16,7 @@ public class Configuration implements ServerConfigurator {
 
     public Configuration(
             @EasyConfigProperty("DEPLOYMENT_ENVIRONMENT") String deploymentEnvironment,
-            @EasyConfigProperty("SERVER_") ServerConfiguration serverConfiguration,
+            @EasyConfigProperty("SERVER_") SnoozyServerConfiguration serverConfiguration,
             @EasyConfigProperty("") JooqConfiguration jooqConfiguration
     ) {
         this.deploymentEnvironment = deploymentEnvironment;
