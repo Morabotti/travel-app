@@ -11,7 +11,7 @@
             starting_city="Helsinki"
             destination_city="Rooma"
             guided_tour="1"
-            cost="400"
+            cost="400.50"
             travel_type="kulttuuri"
     />
     <travels
@@ -21,7 +21,8 @@
             starting_city="Helsinki"
             destination_city="Rovaniemi"
             guided_tour="0"
-            cost="200"
+            cost="200.00"
+            guide="Pekka Ohjaaja"
             travel_type="urheilu"
     />
 

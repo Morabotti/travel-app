@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Travels extends TableImpl<TravelsRecord> {
 
-    private static final long serialVersionUID = 1568923370;
+    private static final long serialVersionUID = 1183149907;
 
     /**
      * The reference instance of <code>travelapp.travels</code>
@@ -94,7 +94,7 @@ public class Travels extends TableImpl<TravelsRecord> {
     /**
      * The column <code>travelapp.travels.cost</code>.
      */
-    public final TableField<TravelsRecord, Integer> COST = createField("cost", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<TravelsRecord, Double> COST = createField("cost", org.jooq.impl.SQLDataType.FLOAT.nullable(false), this, "");
 
     /**
      * The column <code>travelapp.travels.guide</code>.

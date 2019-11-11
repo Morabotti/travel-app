@@ -19,13 +19,16 @@ import java.util.Set;
 import java.util.Collections;
 import java.util.stream.Stream;
 
-@ApplicationPath("/api")
+@ApplicationPath("api")
 public class Application extends fi.jubic.snoozy.Application {
     @Inject
     Configuration config;
 
     @Inject
     CustomerResource customerResource;
+
+    @Inject
+    TravelResource travelResource;
 
     @Inject
     Application() { }
@@ -51,7 +54,8 @@ public class Application extends fi.jubic.snoozy.Application {
     public Set<Object> getSingletons() {
         return Stream.concat(
                 Stream.of(
-                        customerResource
+                        customerResource,
+                        travelResource
                 ),
                 Snoozy.builtins().stream()
         ).collect(Collectors.toSet());
@@ -71,6 +75,7 @@ public class Application extends fi.jubic.snoozy.Application {
                         )
                 );
 
+        /*
         if (application.config.isDevelopmentEnv()) {
             startupScheduler.registerStartupTask(
                     new DbUnitTask(
@@ -81,6 +86,8 @@ public class Application extends fi.jubic.snoozy.Application {
                     )
             );
         }
+
+         */
 
         startupScheduler.start();
 

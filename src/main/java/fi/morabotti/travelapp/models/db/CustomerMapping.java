@@ -1,9 +1,13 @@
 package fi.morabotti.travelapp.models.db;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import fi.jubic.easyvalue.EasyProperty;
 import fi.jubic.easyvalue.EasyValue;
 
-@EasyValue(excludeJson = true)
+@EasyValue
+@JsonDeserialize(as = EasyValue_CustomerMapping.class)
+@JsonSerialize(as = EasyValue_CustomerMapping.class)
 public abstract class CustomerMapping {
     @EasyProperty
     public abstract Long id();

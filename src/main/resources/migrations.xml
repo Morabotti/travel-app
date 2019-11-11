@@ -47,7 +47,7 @@
             <column name="guided_tour" type="boolean">
                 <constraints nullable="false" />
             </column>
-            <column name="cost" type="int">
+            <column name="cost" type="float">
                 <constraints nullable="false" />
             </column>
             <column name="guide" type="varchar(255)">
