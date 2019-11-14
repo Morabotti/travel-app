@@ -31,6 +31,9 @@ public class Application extends fi.jubic.snoozy.Application {
     TravelResource travelResource;
 
     @Inject
+    OrderResource orderResource;
+
+    @Inject
     Application() { }
 
     @Override
@@ -55,7 +58,8 @@ public class Application extends fi.jubic.snoozy.Application {
         return Stream.concat(
                 Stream.of(
                         customerResource,
-                        travelResource
+                        travelResource,
+                        orderResource
                 ),
                 Snoozy.builtins().stream()
         ).collect(Collectors.toSet());
@@ -86,8 +90,7 @@ public class Application extends fi.jubic.snoozy.Application {
                     )
             );
         }
-
-         */
+        */
 
         startupScheduler.start();
 

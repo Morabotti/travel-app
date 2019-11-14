@@ -40,7 +40,7 @@ public class TravelDao {
         return DSL.using(jooqConfiguration.getConfiguration())
                 .select(TRAVELS.fields())
                 .from(TRAVELS)
-                .where(TRAVELS.ID.equals(id))
+                .where(TRAVELS.ID.eq(id))
                 .fetchOptional()
                 .flatMap(TravelDao::mapToModel);
     }
@@ -119,7 +119,7 @@ public class TravelDao {
 
                     return DSL.using(c)
                             .delete(TRAVELS)
-                            .where(TRAVELS.ID.equals(travelMapping.id()))
+                            .where(TRAVELS.ID.eq(travelMapping.id()))
                             .execute() == 1;
                 });
     }

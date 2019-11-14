@@ -40,7 +40,7 @@ public class CustomerDao {
         return DSL.using(jooqConfiguration.getConfiguration())
                 .select(CUSTOMERS.fields())
                 .from(CUSTOMERS)
-                .where(CUSTOMERS.ID.equals(id))
+                .where(CUSTOMERS.ID.eq(id))
                 .fetchOptional()
                 .flatMap(CustomerDao::mapToModel);
     }
@@ -104,7 +104,7 @@ public class CustomerDao {
 
                     return DSL.using(c)
                             .delete(CUSTOMERS)
-                            .where(CUSTOMERS.ID.equals(customerMapping.id()))
+                            .where(CUSTOMERS.ID.eq(customerMapping.id()))
                             .execute() == 1;
                 });
     }

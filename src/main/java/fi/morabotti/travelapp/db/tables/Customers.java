@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Customers extends TableImpl<CustomersRecord> {
 
-    private static final long serialVersionUID = -330429307;
+    private static final long serialVersionUID = 1849019974;
 
     /**
      * The reference instance of <code>travelapp.customers</code>
@@ -85,7 +85,7 @@ public class Customers extends TableImpl<CustomersRecord> {
     /**
      * The column <code>travelapp.customers.created</code>.
      */
-    public final TableField<CustomersRecord, Timestamp> CREATED = createField("created", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.field("CURRENT_TIMESTAMP", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
+    public final TableField<CustomersRecord, Timestamp> CREATED = createField("created", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false).defaultValue(org.jooq.impl.DSL.field("current_timestamp()", org.jooq.impl.SQLDataType.TIMESTAMP)), this, "");
 
     /**
      * Create a <code>travelapp.customers</code> table reference
