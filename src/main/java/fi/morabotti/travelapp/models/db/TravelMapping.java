@@ -43,9 +43,9 @@ public abstract class TravelMapping {
     @EasyProperty
     public abstract String travelType();
 
-    public static TravelMapping.Builder builder() { return new TravelMapping.Builder(); }
+    public static Builder builder() { return new Builder(); }
 
-    public abstract TravelMapping.Builder toBuilder();
+    public abstract Builder toBuilder();
 
     public static class Builder extends EasyValue_TravelMapping.Builder {}
 }

@@ -80,20 +80,20 @@ public class CustomerDao {
         return fetchById(customerMapping.id());
     }
 
-    public Boolean delete(CustomerMapping customerMapping, boolean deleteOrders) {
+    public Boolean delete(long id, boolean deleteOrders) {
         return DSL.using(jooqConfiguration.getConfiguration())
                 .transactionResult(c -> {
                     if (deleteOrders) {
                         int hasOrders = DSL.using(c)
                                 .selectCount()
                                 .from(ORDERS)
-                                .where(ORDERS.CUSTOMER_ID.equal(customerMapping.id()))
+                                .where(ORDERS.CUSTOMER_ID.equal(id))
                                 .fetchOne(0, int.class);
 
                         if (hasOrders > 0) {
                             boolean successful = DSL.using(c)
                                     .delete(ORDERS)
-                                    .where(ORDERS.CUSTOMER_ID.eq(customerMapping.id()))
+                                    .where(ORDERS.CUSTOMER_ID.eq(id))
                                     .execute() == hasOrders;
 
                             if (!successful) {
@@ -104,7 +104,7 @@ public class CustomerDao {
 
                     return DSL.using(c)
                             .delete(CUSTOMERS)
-                            .where(CUSTOMERS.ID.eq(customerMapping.id()))
+                            .where(CUSTOMERS.ID.eq(id))
                             .execute() == 1;
                 });
     }

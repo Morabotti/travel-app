@@ -27,9 +27,9 @@ public abstract class OrderMapping {
     @EasyProperty
     public abstract Boolean active();
 
-    public static OrderMapping.Builder builder() { return new OrderMapping.Builder(); }
+    public static Builder builder() { return new Builder(); }
 
-    public abstract OrderMapping.Builder toBuilder();
+    public abstract Builder toBuilder();
 
     public static class Builder extends EasyValue_OrderMapping.Builder {}
 }
