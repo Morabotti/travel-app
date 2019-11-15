@@ -3,6 +3,21 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "rules": {
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": false
+        },
+        "singleline": {
+          "delimiter": "comma",
+          "requireLast": false
+        }
+      }
+    ]
+  },
   "globals": {
     "fetch": false
   }

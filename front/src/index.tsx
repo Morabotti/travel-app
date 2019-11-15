@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import App from './components/App'
 
 const mount = document.getElementById('mount')
 const render = () => {
@@ -9,15 +10,16 @@ const render = () => {
     return
   }
 
-  ReactDOM.render(<AppContainer>
-    <div>initial setup</div>
-  </AppContainer>, mount)
+  ReactDOM.render(
+    <AppContainer>
+      <App />
+    </AppContainer>,
+    mount
+  )
 }
 
 render()
 
-/*
 if (module.hot) {
-  module.hot.accept('./App', render)
+  module.hot.accept('./components/App', render)
 }
-*/

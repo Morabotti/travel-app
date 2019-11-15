@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": [ "esnext", "dom", "dom.iterable" ],
+    "lib": ["esnext", "dom", "dom.iterable"],
     "jsx": "preserve",
     "noEmit": true,
     "downlevelIteration": true,
@@ -10,9 +10,15 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@theme": ["src/theme"],
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@hooks": ["src/hooks"],
+      "@types": ["src/types"],
+      "@/*": ["src/*"]
+    }
   },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx"
-  ]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }
