@@ -59,7 +59,7 @@ public class OrderResource {
             @PathParam("orderId") long id
     ) {
         if (!orderDao.delete(id)) {
-            throw new InternalServerErrorException("Could not delete travel");
+            throw new InternalServerErrorException("Could not delete order");
         }
 
         return Response.ok().build();
