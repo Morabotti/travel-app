@@ -80,25 +80,23 @@ public class CustomerDao {
         return fetchById(customerMapping.id());
     }
 
-    public Boolean delete(long id, boolean deleteOrders) {
+    public Boolean delete(long id) {
         return DSL.using(jooqConfiguration.getConfiguration())
                 .transactionResult(c -> {
-                    if (deleteOrders) {
-                        int hasOrders = DSL.using(c)
-                                .selectCount()
-                                .from(ORDERS)
-                                .where(ORDERS.CUSTOMER_ID.equal(id))
-                                .fetchOne(0, int.class);
+                    int hasOrders = DSL.using(c)
+                            .selectCount()
+                            .from(ORDERS)
+                            .where(ORDERS.CUSTOMER_ID.equal(id))
+                            .fetchOne(0, int.class);
 
-                        if (hasOrders > 0) {
-                            boolean successful = DSL.using(c)
-                                    .delete(ORDERS)
-                                    .where(ORDERS.CUSTOMER_ID.eq(id))
-                                    .execute() == hasOrders;
+                    if (hasOrders > 0) {
+                        boolean successful = DSL.using(c)
+                                .delete(ORDERS)
+                                .where(ORDERS.CUSTOMER_ID.eq(id))
+                                .execute() == hasOrders;
 
-                            if (!successful) {
-                                throw new SQLException("Failed to remove orders");
-                            }
+                        if (!successful) {
+                            throw new SQLException("Failed to remove orders");
                         }
                     }
 
@@ -121,7 +119,7 @@ public class CustomerDao {
                         .setLastName(record.getValue(CUSTOMERS.LAST_NAME))
                         .setEmail(record.getValue(CUSTOMERS.EMAIL))
                         .setAge(record.getValue(CUSTOMERS.AGE))
-                        .setCreated(record.getValue(CUSTOMERS.CREATED).toString())
+                        .setCreated(record.getValue(CUSTOMERS.CREATED))
                         .build()
         );
     }

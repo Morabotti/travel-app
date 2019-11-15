@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import fi.jubic.easyvalue.EasyProperty;
 import fi.jubic.easyvalue.EasyValue;
 
+import javax.annotation.Nullable;
+import java.sql.Timestamp;
+
 @EasyValue
 @JsonDeserialize(as = EasyValue_CustomerMapping.class)
 @JsonSerialize(as = EasyValue_CustomerMapping.class)
@@ -25,7 +28,8 @@ public abstract class CustomerMapping {
     public abstract Integer age();
 
     @EasyProperty
-    public abstract String created();
+    @Nullable
+    public abstract Timestamp created();
 
     public static Builder builder() { return new Builder(); }
 

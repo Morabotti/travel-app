@@ -1,29 +1,28 @@
-package fi.morabotti.travelapp.models.db;
+package fi.morabotti.travelapp.models.api;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import fi.jubic.easyvalue.EasyProperty;
 import fi.jubic.easyvalue.EasyValue;
-import java.sql.Timestamp;
 
 @EasyValue
-@JsonDeserialize(as = EasyValue_OrderMapping.class)
-@JsonSerialize(as = EasyValue_OrderMapping.class)
-public abstract class OrderMapping {
+@JsonDeserialize(as = EasyValue_OrderView.class)
+@JsonSerialize(as = EasyValue_OrderView.class)
+public abstract class OrderView {
     @EasyProperty
     public abstract Long id();
 
     @EasyProperty
-    public abstract Long customerId();
+    public abstract CustomerView customer();
 
     @EasyProperty
-    public abstract Long travelId();
+    public abstract TravelView travel();
 
     @EasyProperty
-    public abstract Timestamp startDate();
+    public abstract String startDate();
 
     @EasyProperty
-    public abstract Timestamp endDate();
+    public abstract String endDate();
 
     @EasyProperty
     public abstract Boolean active();
@@ -32,5 +31,5 @@ public abstract class OrderMapping {
 
     public abstract Builder toBuilder();
 
-    public static class Builder extends EasyValue_OrderMapping.Builder {}
+    public static class Builder extends EasyValue_OrderView.Builder {}
 }

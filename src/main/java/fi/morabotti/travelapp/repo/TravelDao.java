@@ -95,31 +95,29 @@ public class TravelDao {
         return fetchById(travelMapping.id());
     }
 
-    public Boolean delete(TravelMapping travelMapping, boolean deleteOrders) {
+    public Boolean delete(long id) {
         return DSL.using(jooqConfiguration.getConfiguration())
                 .transactionResult(c -> {
-                    if (deleteOrders) {
-                        int hasOrders = DSL.using(c)
-                                .selectCount()
-                                .from(ORDERS)
-                                .where(ORDERS.TRAVEL_ID.equal(travelMapping.id()))
-                                .fetchOne(0, int.class);
+                    int hasOrders = DSL.using(c)
+                            .selectCount()
+                            .from(ORDERS)
+                            .where(ORDERS.TRAVEL_ID.equal(id))
+                            .fetchOne(0, int.class);
 
-                        if (hasOrders > 0) {
-                            boolean successful = DSL.using(c)
-                                    .delete(ORDERS)
-                                    .where(ORDERS.TRAVEL_ID.eq(travelMapping.id()))
-                                    .execute() == hasOrders;
+                    if (hasOrders > 0) {
+                        boolean successful = DSL.using(c)
+                                .delete(ORDERS)
+                                .where(ORDERS.TRAVEL_ID.eq(id))
+                                .execute() == hasOrders;
 
-                            if (!successful) {
-                                throw new SQLException("Failed to remove orders");
-                            }
+                        if (!successful) {
+                            throw new SQLException("Failed to remove orders");
                         }
                     }
 
                     return DSL.using(c)
                             .delete(TRAVELS)
-                            .where(TRAVELS.ID.eq(travelMapping.id()))
+                            .where(TRAVELS.ID.eq(id))
                             .execute() == 1;
                 });
     }
