@@ -3,26 +3,9 @@ import { Section, ActionButton } from '@components/common'
 import { useTravels } from '@hooks'
 import { BookmarkMultipleOutline } from 'mdi-material-ui'
 import { TravelTable } from '.'
-
-import {
-  createStyles,
-  makeStyles,
-  IconButton
-} from '@material-ui/core'
-
-const useStyles = makeStyles(theme =>
-  createStyles({
-    action: {
-      position: 'fixed',
-      bottom: '0',
-      right: '0',
-      margin: theme.spacing(3.5)
-    }
-  })
-)
+import { IconButton } from '@material-ui/core'
 
 const TravelsView: FC = () => {
-  const classes = useStyles()
   const { travels, loading } = useTravels()
 
   return (

@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 @JsonSerialize(as = EasyValue_CustomerView.class)
 public abstract class CustomerView {
     @EasyProperty
+    @Nullable
     public abstract Long id();
 
     @EasyProperty

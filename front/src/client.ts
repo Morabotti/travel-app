@@ -7,6 +7,19 @@ const checkResponse = (res: Response): Response => {
   return res
 }
 
+export const validateEmailOnServer = (
+  email: string
+): Promise<boolean> => fetch(
+  '/api/customer/validate',
+  {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+    headers: { 'Content-Type': 'application/json' }
+  }
+)
+  .then(checkResponse)
+  .then((res) => res.json())
+
 export const fetchTravels = (): Promise<Travel[]> => fetch(
   '/api/travel',
   {

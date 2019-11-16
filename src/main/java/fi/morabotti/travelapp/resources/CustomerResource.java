@@ -1,5 +1,6 @@
 package fi.morabotti.travelapp.resources;
 
+import fi.morabotti.travelapp.models.api.EmailView;
 import fi.morabotti.travelapp.models.db.CustomerMapping;
 import fi.morabotti.travelapp.models.api.CustomerView;
 import fi.morabotti.travelapp.repo.CustomerDao;
@@ -67,6 +68,17 @@ public class CustomerResource {
         }
 
         return Response.ok().build();
+    }
+
+    @POST
+    @Path("/validate")
+    public Response validateEmail(
+            EmailView emailView
+    ) {
+        if (!customerDao.validateEmail(emailView.email())) {
+            return Response.ok(true).build();
+        }
+        return Response.ok(false).build();
     }
 
     private CustomerMapping viewToMapping (CustomerView customerView) {

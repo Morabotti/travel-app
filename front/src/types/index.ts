@@ -32,6 +32,13 @@ export interface NewCustomer {
   age: number
 }
 
+export interface CustomerForm {
+  firstName: string,
+  lastName: string,
+  email: string,
+  age: string
+}
+
 export interface Travel {
   id: number,
   travelCode: string,

@@ -11,7 +11,7 @@ import {
   TableRow
 } from '@material-ui/core'
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles(() =>
   createStyles({
     th: {
       lineHeight: 1
@@ -41,7 +41,7 @@ const CustomerTable = ({
       </TableHead>
       <TableBody>
         {travels.map(travel => (
-          <TableRow>
+          <TableRow key={travel.id}>
             <TableCell component='td'>{travel.travelCode}</TableCell>
             <TableCell component='td'>{travel.description}</TableCell>
             <TableCell component='td'>{travel.startingCity}</TableCell>

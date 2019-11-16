@@ -107,6 +107,15 @@ public class CustomerDao {
                 });
     }
 
+    public boolean validateEmail(String email) {
+        return DSL.using(jooqConfiguration.getConfiguration())
+                .select(CUSTOMERS.EMAIL)
+                .from(CUSTOMERS)
+                .where(CUSTOMERS.EMAIL.eq(email))
+                .fetchOptional()
+                .isPresent();
+    }
+
     private static Optional<CustomerMapping> mapToModel(Record record) {
         if (record.getValue(CUSTOMERS.ID) == null) {
             return Optional.empty();

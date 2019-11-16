@@ -12,7 +12,7 @@ import {
   TableRow
 } from '@material-ui/core'
 
-const useStyles = makeStyles(theme =>
+const useStyles = makeStyles(() =>
   createStyles({
     th: {
       lineHeight: 1
@@ -41,7 +41,7 @@ const CustomerTable = ({
       </TableHead>
       <TableBody>
         {customers.map(customer => (
-          <TableRow>
+          <TableRow key={customer.id}>
             <TableCell component='td'>{customer.firstName} {customer.lastName}</TableCell>
             <TableCell component='td'>{customer.age}</TableCell>
             <TableCell component='td'>{customer.email}</TableCell>
