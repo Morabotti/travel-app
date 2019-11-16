@@ -67,6 +67,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
     new HtmlWebpackPlugin({
       inject: true,
       template: resolve('./public/index.html'),

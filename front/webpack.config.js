@@ -1,4 +1,4 @@
-const { DefinePlugin } = require('webpack')
+const { DefinePlugin, ContextReplacementPlugin } = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -61,9 +61,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['build/*']
-    }),
+    new ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+    new CleanWebpackPlugin(),
     new DefinePlugin({
       'process.env.APPLICATION_VERSION': JSON.stringify(process.env.APPLICATION_VERSION)
     }),

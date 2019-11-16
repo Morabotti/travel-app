@@ -79,6 +79,7 @@ public class Application extends fi.jubic.snoozy.Application {
                         )
                 );
 
+        /*
         if (application.config.isDevelopmentEnv()) {
             startupScheduler.registerStartupTask(
                     new DbUnitTask(
@@ -89,6 +90,7 @@ public class Application extends fi.jubic.snoozy.Application {
                     )
             );
         }
+         */
 
         startupScheduler.start();
 

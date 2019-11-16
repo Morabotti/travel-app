@@ -10,12 +10,7 @@ const render = () => {
     return
   }
 
-  ReactDOM.render(
-    <AppContainer>
-      <App />
-    </AppContainer>,
-    mount
-  )
+  ReactDOM.render(<AppContainer><App /></AppContainer>, mount)
 }
 
 render()

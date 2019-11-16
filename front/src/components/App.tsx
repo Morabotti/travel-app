@@ -1,10 +1,11 @@
 import React, { FC, Suspense, lazy } from 'react'
+import theme from '@theme'
 import { Navigation, SuspenseLoader } from '@components/common'
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core'
 import { PublicRoutes, PrivateRoutes } from '@types'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { AccountMultiple, BullseyeArrow, ClipboardList } from 'mdi-material-ui'
-import theme from '@theme'
+import { hot } from 'react-hot-loader'
 
 const CustomersView = lazy(() => import('@components/customers/CustomersView'))
 const OrdersView = lazy(() => import('@components/orders/OrdersView'))
@@ -21,13 +22,13 @@ const publicRoutes: PublicRoutes[] = [
     name: 'Travels',
     path: '/travels',
     icon: BullseyeArrow,
-    component: OrdersView
+    component: TravelsView
   },
   {
     name: 'Orders',
     path: '/orders',
     icon: ClipboardList,
-    component: TravelsView
+    component: OrdersView
   }
 ]
 
@@ -54,4 +55,4 @@ const App: FC = () => (
   </MuiThemeProvider>
 )
 
-export default App
+export default hot(module)(App)

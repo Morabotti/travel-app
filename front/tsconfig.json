@@ -13,9 +13,11 @@
     "baseUrl": ".",
     "paths": {
       "@theme": ["src/theme"],
+      "@client": ["src/client.ts"],
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
       "@hooks": ["src/hooks"],
+      "@utils/*": ["src/utils/*"],
       "@types": ["src/types"],
       "@/*": ["src/*"]
     }

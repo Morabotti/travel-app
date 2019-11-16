@@ -80,7 +80,7 @@ const useStyles = makeStyles(theme =>
 )
 
 interface Props {
-  routes: PublicRoutes[]
+  routes: PublicRoutes[],
   children: ReactNode
 }
 

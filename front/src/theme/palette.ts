@@ -1,10 +1,11 @@
 import { PaletteOptions } from '@material-ui/core/styles/createPalette'
 const white = '#fff'
+const black = '#000'
 
 const palette: PaletteOptions = {
   common: {
     white,
-    black: '#000'
+    black
   },
   primary: {
     contrastText: white,
@@ -13,10 +14,10 @@ const palette: PaletteOptions = {
     dark: '#303f9f'
   },
   secondary: {
-    contrastText: white,
-    light: '#ff4081',
-    main: '#f50057',
-    dark: '#c51162'
+    light: '#ff7961',
+    main: '#f44336',
+    dark: '#ba000d',
+    contrastText: white
   },
   error: {
     light: '#e57373',
@@ -32,7 +33,7 @@ const palette: PaletteOptions = {
   },
   divider: 'rgba(0, 0, 0, 0.12)',
   background: {
-    paper: '#fff',
+    paper: white,
     default: '#fafafa'
   },
   action: {

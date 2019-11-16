@@ -11,8 +11,6 @@ import javax.ws.rs.core.Response;
 import java.sql.Timestamp;
 import java.util.List;
 
-import static fi.morabotti.travelapp.db.tables.Orders.ORDERS;
-
 @Path("/order")
 @Produces(MediaType.APPLICATION_JSON)
 public class OrderResource {
