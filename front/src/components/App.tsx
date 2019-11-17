@@ -13,6 +13,7 @@ const CustomersView = lazy(() => import('@components/customers/CustomersView'))
 const OrdersView = lazy(() => import('@components/orders/OrdersView'))
 const TravelsView = lazy(() => import('@components/travels/TravelsView'))
 const CustomerView = lazy(() => import('@components/customer/CustomerView'))
+const TravelView = lazy(() => import('@components/travel/TravelView'))
 
 const publicRoutes: PublicRoutes[] = [
   {
@@ -39,6 +40,9 @@ const privateRoutes: PrivateRoutes[] = [
   {
     path: '/customers/:id',
     component: CustomerView
+  }, {
+    path: '/travels/:id',
+    component: TravelView
   }
 ]
 

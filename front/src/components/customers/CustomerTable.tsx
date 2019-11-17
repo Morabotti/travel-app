@@ -1,7 +1,7 @@
 import React from 'react'
 import { Customer } from '@types'
 import { toLocalDate } from '@utils/dates'
-import { usePagination, filterPagination } from '@hooks'
+import { usePagination } from '@hooks'
 import { useHistory } from 'react-router'
 import { PaginationFooter } from '@components/common'
 import { PencilOutline, DeleteOutline, AccountOutline } from 'mdi-material-ui'
@@ -51,7 +51,7 @@ const CustomerTable = ({
   setConfirmDialog,
   setEditDialog
 }: Props) => {
-  const { offset, limit, setOffset } = usePagination(15)
+  const { offset, limit, setOffset, filterPagination } = usePagination(15)
   const { push } = useHistory()
   const classes = useStyles()
 
