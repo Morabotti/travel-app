@@ -95,7 +95,7 @@ const CustomerTable = ({
                     <Tooltip title='View customer' placement='top'>
                       <IconButton
                         className={classes.small}
-                        onClick={() => push(`/customer/${customer.id}`)}
+                        onClick={() => push(`/customers/${customer.id}`)}
                       >
                         <AccountOutline />
                       </IconButton>

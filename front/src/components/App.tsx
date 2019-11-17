@@ -37,12 +37,12 @@ const publicRoutes: PublicRoutes[] = [
 
 const privateRoutes: PrivateRoutes[] = [
   {
-    path: '/customer/:id',
+    path: '/customers/:id',
     component: CustomerView
   }
 ]
 
-const routes = [...publicRoutes, ...privateRoutes]
+const routes = [...privateRoutes, ...publicRoutes]
 
 const App: FC = () => (
   <MuiThemeProvider theme={theme}>

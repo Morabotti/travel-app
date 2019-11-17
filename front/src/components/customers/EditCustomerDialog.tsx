@@ -19,9 +19,6 @@ import {
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    th: {
-      lineHeight: 1
-    },
     default: {
       marginBottom: theme.spacing(1)
     },

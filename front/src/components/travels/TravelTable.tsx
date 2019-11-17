@@ -1,7 +1,6 @@
 import React from 'react'
 import { Travel } from '@types'
 import clsx from 'clsx'
-
 import { PencilOutline, DeleteOutline, CubeOutline } from 'mdi-material-ui'
 
 import {
@@ -39,12 +38,14 @@ const useStyles = makeStyles(theme =>
 
 interface Props {
   travels: Travel[],
-  setConfirmDialog: (set: number | null) => void
+  setConfirmDialog: (set: number | null) => void,
+  setEditDialog: (set: null | Travel) => void
 }
 
 const CustomerTable = ({
   travels,
-  setConfirmDialog
+  setConfirmDialog,
+  setEditDialog
 }: Props) => {
   const classes = useStyles()
   return (
@@ -52,9 +53,10 @@ const CustomerTable = ({
       <TableHead>
         <TableRow>
           <TableCell className={classes.th} component='th'>Code</TableCell>
-          <TableCell className={classes.th} component='th'>Description</TableCell>
+          <TableCell className={classes.th} component='th'>Name</TableCell>
           <TableCell className={classes.th} component='th'>Starting City</TableCell>
           <TableCell className={classes.th} component='th'>Destination City</TableCell>
+          <TableCell className={classes.th} component='th'>Type</TableCell>
           <TableCell className={classes.th} component='th'>Guided</TableCell>
           <TableCell className={classes.thLast} component='th' />
         </TableRow>
@@ -63,16 +65,17 @@ const CustomerTable = ({
         {travels.map(travel => (
           <TableRow key={travel.id} className='contains-inv-actions'>
             <TableCell component='td'>{travel.travelCode}</TableCell>
-            <TableCell component='td'>{travel.description}</TableCell>
+            <TableCell component='td'>{travel.name}</TableCell>
             <TableCell component='td'>{travel.startingCity}</TableCell>
             <TableCell component='td'>{travel.destinationCity}</TableCell>
+            <TableCell component='td'>{travel.travelType}</TableCell>
             <TableCell component='td'>{travel.guidedTour ? 'Yes' : 'No'}</TableCell>
             <TableCell component='td' className={classes.actions}>
               <div className='inv-actions'>
                 <Tooltip title='Edit travel' placement='top'>
                   <IconButton
                     className={clsx(classes.small, classes.offset)}
-                    onClick={() => {}}
+                    onClick={() => setEditDialog(travel)}
                   >
                     <PencilOutline />
                   </IconButton>

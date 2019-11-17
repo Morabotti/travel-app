@@ -12,7 +12,7 @@
             destination_city="Rooma"
             guided_tour="1"
             cost="400.50"
-            travel_type="kulttuuri"
+            travel_type="culture"
     />
     <travels
             travel_code="pohjoinenvalo2020"
@@ -23,7 +23,7 @@
             guided_tour="0"
             cost="200.00"
             guide="Pekka Ohjaaja"
-            travel_type="urheilu"
+            travel_type="sport"
     />
 
     <orders customer_id="1" travel_id="2" start_date="2019-10-05 00:00:10" end_date="2019-10-08 00:00:10" active="true" />
