@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Section, ActionButton } from '@components/common'
+import { Section, ActionButton, ConfirmDialog } from '@components/common'
 import { useTravels } from '@hooks'
 import { BookmarkMultipleOutline } from 'mdi-material-ui'
 import { TravelTable, NewTravelDialog } from '.'
@@ -10,7 +10,10 @@ const TravelsView: FC = () => {
     travels,
     loading,
     setNewTravelDialog,
+    setConfirmDialog,
     isNewTravelDialog,
+    isConfirmDialog,
+    onConfirmDelete,
     onNewTravel
   } = useTravels()
 
@@ -27,7 +30,10 @@ const TravelsView: FC = () => {
           </>
         }
       >
-        <TravelTable travels={travels} />
+        <TravelTable
+          travels={travels}
+          setConfirmDialog={setConfirmDialog}
+        />
       </Section>
       <ActionButton
         title='Add new travel'
@@ -37,6 +43,15 @@ const TravelsView: FC = () => {
         open={isNewTravelDialog}
         onSubmit={onNewTravel}
         onClose={() => setNewTravelDialog(false)}
+      />
+      <ConfirmDialog
+        open={isConfirmDialog !== null}
+        onConfirm={onConfirmDelete}
+        onClose={() => setConfirmDialog(null)}
+        title='Confirmation'
+        description={`Are you sure that you want to delete this travel.
+          This action will permanently delete orders with this travel.
+        `}
       />
     </div>
   )

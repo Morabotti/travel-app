@@ -38,11 +38,13 @@ const useStyles = makeStyles(theme =>
 )
 
 interface Props {
-  travels: Travel[]
+  travels: Travel[],
+  setConfirmDialog: (set: number | null) => void
 }
 
 const CustomerTable = ({
-  travels
+  travels,
+  setConfirmDialog
 }: Props) => {
   const classes = useStyles()
   return (
@@ -78,7 +80,7 @@ const CustomerTable = ({
                 <Tooltip title='Delete travel' placement='top'>
                   <IconButton
                     className={clsx(classes.small, classes.offset)}
-                    onClick={() => {}}>
+                    onClick={() => setConfirmDialog(travel.id)}>
                     <DeleteOutline />
                   </IconButton>
                 </Tooltip>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Travel, NewTravel } from '@types'
 import { useInitialContext } from '@hooks'
-import { fetchTravels, addTravel } from '@client'
+import { fetchTravels, addTravel, deleteTravel } from '@client'
 
 interface TravelsContext {
   loading: boolean,
@@ -9,15 +9,19 @@ interface TravelsContext {
   travels: Travel[],
 
   onNewTravel: (newTravel: NewTravel) => void,
+  onConfirmDelete: () => void,
 
   isNewTravelDialog: boolean,
+  isConfirmDialog: null | number,
 
-  setNewTravelDialog: (set: boolean) => void
+  setNewTravelDialog: (set: boolean) => void,
+  setConfirmDialog: (set: null | number) => void
 }
 
 export const useTravels = (): TravelsContext => {
   const { loading, error, setError, setLoading } = useInitialContext(false, true)
   const [isNewTravelDialog, setStateNewTravelDialog] = useState(false)
+  const [isConfirmDialog, setStateConfirmDialog] = useState<null | number>(null)
   const [travels, setTravels] = useState<Travel[]>([])
 
   const getTravels = () => {
@@ -41,7 +45,20 @@ export const useTravels = (): TravelsContext => {
       })
   }
 
+  const onConfirmDelete = () => {
+    if (isConfirmDialog === null) {
+      return
+    }
+
+    deleteTravel(isConfirmDialog)
+      .then(() => {
+        setTravels(travels.filter(i => i.id !== isConfirmDialog))
+        setStateConfirmDialog(null)
+      })
+  }
+
   const setNewTravelDialog = (set: boolean) => setStateNewTravelDialog(set)
+  const setConfirmDialog = (set: null | number) => setStateConfirmDialog(set)
 
   useEffect(() => {
     getTravels()
@@ -53,9 +70,12 @@ export const useTravels = (): TravelsContext => {
     travels,
 
     onNewTravel,
+    onConfirmDelete,
 
     isNewTravelDialog,
+    isConfirmDialog,
 
-    setNewTravelDialog
+    setNewTravelDialog,
+    setConfirmDialog
   }
 }
