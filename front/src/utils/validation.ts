@@ -1,4 +1,5 @@
 import { CustomerForm, CustomerEditForm } from '@types'
+import * as Yup from 'yup'
 
 export const validateEmail = (email: string): boolean => {
   // eslint-disable-next-line no-useless-escape
@@ -39,3 +40,28 @@ export const validateCustomer = (data: CustomerForm | CustomerEditForm) => {
 
   return errors
 }
+
+export const travelSchema = Yup.object().shape({
+  travelCode: Yup.string()
+    .min(4, 'Travel code too short')
+    .max(30, 'Travel code too long')
+    .required('Travel code is required'),
+  name: Yup.string()
+    .max(30, 'Name is too long')
+    .required('Name is required'),
+  description: Yup.string()
+    .max(250, 'Too long description'),
+  startingCity: Yup.string()
+    .max(50, 'Travel starting place is too long')
+    .required('Travel starting place is required'),
+  destinationCity: Yup.string()
+    .max(50, 'Travel destination is too long')
+    .required('Travel destination is required'),
+  guidedTour: Yup.boolean()
+    .required(),
+  cost: Yup.number()
+    .typeError('Travel cost must be a number')
+    .required('Travel cost is required'),
+  guide: Yup.mixed(),
+  travelType: Yup.string()
+})

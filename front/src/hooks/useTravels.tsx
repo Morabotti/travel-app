@@ -1,16 +1,23 @@
 import { useState, useEffect } from 'react'
-import { Travel } from '@types'
+import { Travel, NewTravel } from '@types'
 import { useInitialContext } from '@hooks'
-import { fetchTravels } from '@client'
+import { fetchTravels, addTravel } from '@client'
 
 interface TravelsContext {
   loading: boolean,
   error: boolean,
-  travels: Travel[]
+  travels: Travel[],
+
+  onNewTravel: (newTravel: NewTravel) => void,
+
+  isNewTravelDialog: boolean,
+
+  setNewTravelDialog: (set: boolean) => void
 }
 
 export const useTravels = (): TravelsContext => {
   const { loading, error, setError, setLoading } = useInitialContext(false, true)
+  const [isNewTravelDialog, setStateNewTravelDialog] = useState(false)
   const [travels, setTravels] = useState<Travel[]>([])
 
   const getTravels = () => {
@@ -26,6 +33,16 @@ export const useTravels = (): TravelsContext => {
       })
   }
 
+  const onNewTravel = (newTravel: NewTravel) => {
+    addTravel(newTravel)
+      .then(travel => {
+        setTravels([...travels, travel])
+        setStateNewTravelDialog(false)
+      })
+  }
+
+  const setNewTravelDialog = (set: boolean) => setStateNewTravelDialog(set)
+
   useEffect(() => {
     getTravels()
   }, [])
@@ -33,6 +50,12 @@ export const useTravels = (): TravelsContext => {
   return {
     loading,
     error,
-    travels
+    travels,
+
+    onNewTravel,
+
+    isNewTravelDialog,
+
+    setNewTravelDialog
   }
 }

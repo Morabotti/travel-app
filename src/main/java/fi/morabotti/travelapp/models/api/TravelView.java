@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 @JsonSerialize(as = EasyValue_TravelView.class)
 public abstract class TravelView {
     @EasyProperty
+    @Nullable
     public abstract Long id();
 
     @EasyProperty

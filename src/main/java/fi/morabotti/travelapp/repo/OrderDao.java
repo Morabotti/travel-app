@@ -122,6 +122,34 @@ public class OrderDao {
                 .execute() == 1;
     }
 
+    public List<OrderView> fetchCustomersOrders(long id) {
+        return DSL.using(jooqConfiguration.getConfiguration())
+                .select()
+                .from(ORDERS)
+                .leftJoin(CUSTOMERS).onKey(Keys.FK_ORDERS_CUSTOMER_ID)
+                .leftJoin(TRAVELS).onKey(Keys.FK_ORDERS_TRAVEL_ID)
+                .where(ORDERS.CUSTOMER_ID.eq(id))
+                .fetchStream()
+                .map(OrderDao::mapToView)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+    }
+
+    public List<OrderView> fetchTravelsOrders(long id) {
+        return DSL.using(jooqConfiguration.getConfiguration())
+                .select()
+                .from(ORDERS)
+                .leftJoin(CUSTOMERS).onKey(Keys.FK_ORDERS_CUSTOMER_ID)
+                .leftJoin(TRAVELS).onKey(Keys.FK_ORDERS_TRAVEL_ID)
+                .where(ORDERS.TRAVEL_ID.eq(id))
+                .fetchStream()
+                .map(OrderDao::mapToView)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+    }
+
 
     private static Optional<OrderView> mapToView(Record record) {
         if (record.getValue(ORDERS.ID) == null) {

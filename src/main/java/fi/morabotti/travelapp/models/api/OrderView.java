@@ -5,11 +5,14 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import fi.jubic.easyvalue.EasyProperty;
 import fi.jubic.easyvalue.EasyValue;
 
+import javax.annotation.Nullable;
+
 @EasyValue
 @JsonDeserialize(as = EasyValue_OrderView.class)
 @JsonSerialize(as = EasyValue_OrderView.class)
 public abstract class OrderView {
     @EasyProperty
+    @Nullable
     public abstract Long id();
 
     @EasyProperty
@@ -25,6 +28,7 @@ public abstract class OrderView {
     public abstract String endDate();
 
     @EasyProperty
+    @Nullable
     public abstract Boolean active();
 
     public static Builder builder() { return new Builder(); }

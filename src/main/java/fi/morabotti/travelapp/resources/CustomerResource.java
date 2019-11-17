@@ -1,9 +1,11 @@
 package fi.morabotti.travelapp.resources;
 
 import fi.morabotti.travelapp.models.api.EmailView;
+import fi.morabotti.travelapp.models.api.OrderView;
 import fi.morabotti.travelapp.models.db.CustomerMapping;
 import fi.morabotti.travelapp.models.api.CustomerView;
 import fi.morabotti.travelapp.repo.CustomerDao;
+import fi.morabotti.travelapp.repo.OrderDao;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -16,10 +18,12 @@ import java.util.stream.Collectors;
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerResource {
     private final CustomerDao customerDao;
+    private final OrderDao orderDao;
 
     @Inject
-    public CustomerResource (CustomerDao customerDao) {
+    public CustomerResource (CustomerDao customerDao, OrderDao orderDao) {
         this.customerDao = customerDao;
+        this.orderDao = orderDao;
     }
 
     @GET
@@ -38,6 +42,14 @@ public class CustomerResource {
         return customerDao.fetchById(id)
                 .map(this::mappingToView)
                 .orElseThrow(NotFoundException::new);
+    }
+
+    @GET
+    @Path("/orders/{customerId}")
+    public List<OrderView> fetchCustomerOrders(
+            @PathParam("customerId") long id
+    ) {
+        return orderDao.fetchCustomersOrders(id);
     }
 
     @POST

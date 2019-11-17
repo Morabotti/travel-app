@@ -79,6 +79,31 @@ export interface NewTravel {
   travelType: TravelType
 }
 
+export interface TravelForm {
+  travelCode: string,
+  name: string,
+  description: string,
+  startingCity: string,
+  destinationCity: string,
+  guidedTour: boolean,
+  cost: string,
+  guide: null | string,
+  travelType: string
+}
+
+export interface TravelEditForm {
+  id: number,
+  travelCode: string,
+  name: string,
+  description: string,
+  startingCity: string,
+  destinationCity: string,
+  guidedTour: boolean,
+  cost: string,
+  guide: null | string,
+  travelType: string
+}
+
 export interface Order {
   id: number,
   customer: Customer,
