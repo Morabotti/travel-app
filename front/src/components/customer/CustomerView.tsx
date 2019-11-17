@@ -6,7 +6,7 @@ import { CustomerDetails, CustomerOrders } from '.'
 
 const CustomerView: FC = () => {
   const { push } = useHistory()
-  const { customer, customerRequest, orderRequest } = useCustomer()
+  const { customer, customerRequest, orderRequest, orders } = useCustomer()
 
   return (
     <div>
@@ -20,7 +20,7 @@ const CustomerView: FC = () => {
         <Section title='Customer orders' loading={orderRequest.loading}>
           <CustomerOrders
             error={orderRequest.error}
-            orders={[]}
+            orders={orders}
           />
         </Section>
       )}

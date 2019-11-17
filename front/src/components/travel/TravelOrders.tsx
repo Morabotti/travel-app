@@ -1,11 +1,7 @@
 import React, { Fragment } from 'react'
 import { Order } from '@types'
-
-import {
-  createStyles,
-  makeStyles,
-  Typography as T
-} from '@material-ui/core'
+import { ViewOrderHistory } from '@components/common'
+import { createStyles, makeStyles, Typography as T } from '@material-ui/core'
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -16,7 +12,7 @@ const useStyles = makeStyles(theme =>
 )
 
 interface Props {
-  orders: Order[] | null,
+  orders: Order[],
   error: boolean
 }
 
@@ -38,9 +34,17 @@ const CustomerOrders = ({
     )
   }
 
+  if (orders.length === 0) {
+    return (
+      <div>
+        <T variant='subtitle1'>No orders were found with this travel.</T>
+      </div>
+    )
+  }
+
   return (
     <div>
-      <T>TODO</T>
+      <ViewOrderHistory orders={orders} />
     </div>
   )
 }

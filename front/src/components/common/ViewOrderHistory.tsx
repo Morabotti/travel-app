@@ -1,20 +1,20 @@
 import React from 'react'
 import { Order } from '@types'
-import { toLocalDate } from '@utils/dates'
-import { usePagination } from '@hooks'
+import { EyeOutline } from 'mdi-material-ui'
 import { useHistory } from 'react-router'
+import { toLocalDate } from '@utils/dates'
 import { PaginationFooter } from '@components/common'
-import { PencilOutline, DeleteOutline, EyeOutline } from 'mdi-material-ui'
+import { usePagination } from '@hooks'
 import clsx from 'clsx'
 
 import {
-  makeStyles,
   createStyles,
+  makeStyles,
   Table,
   TableHead,
-  TableBody,
-  TableCell,
   TableRow,
+  TableCell,
+  TableBody,
   Tooltip,
   IconButton
 } from '@material-ui/core'
@@ -41,19 +41,15 @@ const useStyles = makeStyles(theme =>
 )
 
 interface Props {
-  orders: Order[],
-  setConfirmDialog: (set: number | null) => void,
-  setEditDialog: (set: Order | null) => void
+  orders: Order[]
 }
 
-const OrderTable = ({
-  orders,
-  setConfirmDialog,
-  setEditDialog
+const CustomerOrders = ({
+  orders
 }: Props) => {
-  const { offset, limit, setOffset, filterPagination } = usePagination(15)
-  const { push } = useHistory()
   const classes = useStyles()
+  const { offset, limit, setOffset, filterPagination } = usePagination(5)
+  const { push } = useHistory()
 
   return (
     <>
@@ -83,24 +79,9 @@ const OrderTable = ({
                 <TableCell component='td'>{order.active ? 'Yes' : 'No'}</TableCell>
                 <TableCell component='td' className={classes.actions}>
                   <div className='inv-actions'>
-                    <Tooltip title='Edit order' placement='top'>
-                      <IconButton
-                        className={clsx(classes.small, classes.offset)}
-                        onClick={() => setEditDialog(order)}
-                      >
-                        <PencilOutline />
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title='Delete order' placement='top'>
-                      <IconButton
-                        className={clsx(classes.small, classes.offset)}
-                        onClick={() => setConfirmDialog(order.id)}>
-                        <DeleteOutline />
-                      </IconButton>
-                    </Tooltip>
                     <Tooltip title='View order' placement='top'>
                       <IconButton
-                        className={classes.small}
+                        className={clsx(classes.small, classes.offset)}
                         onClick={() => push(`/orders/${order.id}`)}
                       >
                         <EyeOutline />
@@ -123,4 +104,4 @@ const OrderTable = ({
   )
 }
 
-export default OrderTable
+export default CustomerOrders

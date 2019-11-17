@@ -1,18 +1,21 @@
 import React, { FC } from 'react'
 import { Section, ActionButton, ConfirmDialog } from '@components/common'
-import { OrderTable, NewOrderDialog } from '.'
+import { OrderTable, NewOrderDialog, EditOrderDialog } from '.'
 import { useOrders } from '@hooks'
 
 const OrdersView: FC = () => {
   const {
     orders,
     loading,
+    editOrder,
     isConfirmDialog,
     isNewOrderDialog,
     onConfirmDelete,
     onNewOrder,
+    onEditOrder,
     setConfirmDialog,
-    setNewOrderDialog
+    setNewOrderDialog,
+    setEditOrderDialog
   } = useOrders()
 
   return (
@@ -21,6 +24,7 @@ const OrdersView: FC = () => {
         <OrderTable
           orders={orders}
           setConfirmDialog={setConfirmDialog}
+          setEditDialog={setEditOrderDialog}
         />
       </Section>
       <ActionButton
@@ -31,6 +35,12 @@ const OrdersView: FC = () => {
         open={isNewOrderDialog}
         onSubmit={onNewOrder}
         onClose={() => setNewOrderDialog(false)}
+      />
+      <EditOrderDialog
+        open={editOrder !== null}
+        onClose={() => setEditOrderDialog(null)}
+        onSubmit={onEditOrder}
+        initialValues={editOrder}
       />
       <ConfirmDialog
         open={isConfirmDialog !== null}

@@ -20,6 +20,30 @@ export const validateEmailOnServer = (
   .then(checkResponse)
   .then((res) => res.json())
 
+export const fetchCustomerOrders = (
+  id: number
+): Promise<Order[]> => fetch(
+  `/api/customer/orders/${id}`,
+  {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }
+)
+  .then(checkResponse)
+  .then((res) => res.json())
+
+export const fetchTravelOrders = (
+  id: number
+): Promise<Order[]> => fetch(
+  `/api/travel/orders/${id}`,
+  {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }
+)
+  .then(checkResponse)
+  .then((res) => res.json())
+
 export const fetchOrders = (): Promise<Order[]> => fetch(
   '/api/order',
   {
@@ -54,12 +78,12 @@ export const addOrder = (
   .then((res) => res.json())
 
 export const editOrder = (
-  travel: Travel
-): Promise<Travel> => fetch(
+  order: Order
+): Promise<Order> => fetch(
   `/api/order`,
   {
     method: 'PUT',
-    body: JSON.stringify(travel),
+    body: JSON.stringify(order),
     headers: { 'Content-Type': 'application/json' }
   }
 )
@@ -75,7 +99,6 @@ export const deleteOrder = (id: number): Promise<Response> => fetch(
 )
   .then(checkResponse)
 
-// ! HEHEHH
 export const fetchTravels = (): Promise<Travel[]> => fetch(
   '/api/travel',
   {

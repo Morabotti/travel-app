@@ -75,7 +75,7 @@ const NewOrderDialog = ({
     const newOrder: NewOrder = {
       ...data,
       startDate: data.startDate.format('YYYY-MM-DD HH:MM:SS'),
-      endDate: data.startDate.format('YYYY-MM-DD HH:MM:SS'),
+      endDate: data.endDate.format('YYYY-MM-DD HH:MM:SS'),
       customer: (data.customer as Customer),
       travel: (data.travel as Travel)
     }

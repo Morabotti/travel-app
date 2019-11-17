@@ -2,7 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import { Travel } from '@types'
 import { useHistory } from 'react-router'
-import { PencilOutline, DeleteOutline, CubeOutline } from 'mdi-material-ui'
+import { PencilOutline, DeleteOutline, EyeOutline } from 'mdi-material-ui'
 import { PaginationFooter } from '@components/common'
 import { usePagination } from '@hooks'
 
@@ -61,8 +61,8 @@ const CustomerTable = ({
           <TableRow>
             <TableCell className={classes.th} component='th'>Code</TableCell>
             <TableCell className={classes.th} component='th'>Name</TableCell>
-            <TableCell className={classes.th} component='th'>Starting City</TableCell>
-            <TableCell className={classes.th} component='th'>Destination City</TableCell>
+            <TableCell className={classes.th} component='th'>Starting city</TableCell>
+            <TableCell className={classes.th} component='th'>Destination city</TableCell>
             <TableCell className={classes.th} component='th'>Type</TableCell>
             <TableCell className={classes.th} component='th'>Guided</TableCell>
             <TableCell className={classes.thLast} component='th' />
@@ -100,7 +100,7 @@ const CustomerTable = ({
                         className={classes.small}
                         onClick={() => push(`/travels/${travel.id}`)}
                       >
-                        <CubeOutline />
+                        <EyeOutline />
                       </IconButton>
                     </Tooltip>
                   </div>

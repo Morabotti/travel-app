@@ -130,6 +130,24 @@ export interface OrderForm {
   active: boolean
 }
 
+export interface OrderEditForm {
+  id: number,
+  customer: Customer,
+  travel: Travel,
+  startDate: Moment,
+  endDate: Moment,
+  active: boolean
+}
+
+export interface OrderEditInnerForm {
+  id: number,
+  customer: Customer | null,
+  travel: Travel | null,
+  startDate: Moment | null,
+  endDate: Moment | null,
+  active: boolean
+}
+
 export interface NewOrder {
   customer: Customer,
   travel: Travel,

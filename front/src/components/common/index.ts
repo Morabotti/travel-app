@@ -5,6 +5,8 @@ import ActionButton from './ActionButton'
 import PaginationFooter from './PaginationFooter'
 import ConfirmDialog from './ConfirmDialog'
 import BackButton from './BackButton'
+import ViewOrderHistory from './ViewOrderHistory'
+
 import CustomTextField from './forms/CustomTextField'
 import EmailTextField from './forms/EmailTextField'
 import CustomCheckBox from './forms/CustomCheckBox'
@@ -21,5 +23,6 @@ export {
   ConfirmDialog,
   BackButton,
   CustomCheckBox,
-  CustomSelect
+  CustomSelect,
+  ViewOrderHistory
 }

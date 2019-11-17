@@ -4,7 +4,7 @@ import { toLocalDate } from '@utils/dates'
 import { usePagination } from '@hooks'
 import { useHistory } from 'react-router'
 import { PaginationFooter } from '@components/common'
-import { PencilOutline, DeleteOutline, AccountOutline } from 'mdi-material-ui'
+import { PencilOutline, DeleteOutline, EyeOutline } from 'mdi-material-ui'
 import clsx from 'clsx'
 
 import {
@@ -97,7 +97,7 @@ const CustomerTable = ({
                         className={classes.small}
                         onClick={() => push(`/customers/${customer.id}`)}
                       >
-                        <AccountOutline />
+                        <EyeOutline />
                       </IconButton>
                     </Tooltip>
                   </div>

@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useInitialContext } from '@hooks'
-import { fetchTravel } from '@client'
-import { RequestContext, Travel } from '@types'
+import { fetchTravel, fetchTravelOrders } from '@client'
+import { RequestContext, Travel, Order } from '@types'
 
 interface TravelContext {
   travelRequest: RequestContext,
   orderRequest: RequestContext,
-  travel: Travel | null
+  travel: Travel | null,
+  orders: Order[]
 }
 
 export const useTravel = (): TravelContext => {
   const { id } = useParams()
   const [travel, setTravel] = useState<null | Travel>(null)
+  const [orders, setOrders] = useState<Order[]>([])
   const travelRequest = useInitialContext(false, true)
   const orderRequest = useInitialContext(false, true)
 
@@ -27,10 +29,18 @@ export const useTravel = (): TravelContext => {
         travelRequest.setLoading(false)
         travelRequest.setError(false)
         setTravel(t)
+        fetchTravelOrders(t.id)
+          .then(o => {
+            orderRequest.setLoading(false)
+            orderRequest.setError(false)
+            setOrders(o)
+          })
       })
       .catch(() => {
         travelRequest.setLoading(false)
         travelRequest.setError(true)
+        orderRequest.setLoading(false)
+        orderRequest.setError(true)
         setTravel(null)
       })
   }
@@ -42,6 +52,7 @@ export const useTravel = (): TravelContext => {
   return {
     travel,
     travelRequest,
-    orderRequest
+    orderRequest,
+    orders
   }
 }

@@ -1,7 +1,9 @@
 package fi.morabotti.travelapp.resources;
 
+import fi.morabotti.travelapp.models.api.OrderView;
 import fi.morabotti.travelapp.models.api.TravelView;
 import fi.morabotti.travelapp.models.db.TravelMapping;
+import fi.morabotti.travelapp.repo.OrderDao;
 import fi.morabotti.travelapp.repo.TravelDao;
 
 import javax.inject.Inject;
@@ -15,10 +17,12 @@ import java.util.stream.Collectors;
 @Produces(MediaType.APPLICATION_JSON)
 public class TravelResource {
     private final TravelDao travelDao;
+    private final OrderDao orderDao;
 
     @Inject
-    public TravelResource (TravelDao travelDao) {
+    public TravelResource (TravelDao travelDao, OrderDao orderDao) {
         this.travelDao = travelDao;
+        this.orderDao = orderDao;
     }
 
     @GET
@@ -37,6 +41,14 @@ public class TravelResource {
         return travelDao.fetchById(id)
                 .map(this::mappingToView)
                 .orElseThrow(NotFoundException::new);
+    }
+
+    @GET
+    @Path("/orders/{travelId}")
+    public List<OrderView> fetchCustomerOrders(
+            @PathParam("travelId") long id
+    ) {
+        return orderDao.fetchTravelsOrders(id);
     }
 
     @POST

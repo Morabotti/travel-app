@@ -7,6 +7,7 @@ import { usePagination } from './usePagination'
 import { useCustomer } from './useCustomer'
 import { useTravel } from './useTravel'
 import { useOrders } from './useOrders'
+import { useOrder } from './useOrder'
 
 export {
   useInitialContext,
@@ -17,5 +18,6 @@ export {
   usePagination,
   useCustomer,
   useTravel,
-  useOrders
+  useOrders,
+  useOrder
 }

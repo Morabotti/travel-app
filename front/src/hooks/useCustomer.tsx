@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useInitialContext } from '@hooks'
-import { fetchCustomer } from '@client'
-import { Customer, RequestContext } from '@types'
+import { fetchCustomer, fetchCustomerOrders } from '@client'
+import { Customer, RequestContext, Order } from '@types'
 
 interface CustomerContext {
   customerRequest: RequestContext,
   orderRequest: RequestContext,
-  customer: Customer | null
+  customer: Customer | null,
+  orders: Order[]
 }
 
 export const useCustomer = (): CustomerContext => {
   const { id } = useParams()
   const [customer, setCustomer] = useState<null | Customer>(null)
+  const [orders, setOrders] = useState<Order[]>([])
   const customerRequest = useInitialContext(false, true)
   const orderRequest = useInitialContext(false, true)
 
@@ -27,10 +29,18 @@ export const useCustomer = (): CustomerContext => {
         customerRequest.setLoading(false)
         customerRequest.setError(false)
         setCustomer(c)
+        fetchCustomerOrders(c.id)
+          .then(o => {
+            orderRequest.setLoading(false)
+            orderRequest.setError(false)
+            setOrders(o)
+          })
       })
       .catch(() => {
         customerRequest.setLoading(false)
         customerRequest.setError(true)
+        orderRequest.setLoading(false)
+        orderRequest.setError(true)
         setCustomer(null)
       })
   }
@@ -42,6 +52,7 @@ export const useCustomer = (): CustomerContext => {
   return {
     customer,
     customerRequest,
-    orderRequest
+    orderRequest,
+    orders
   }
 }

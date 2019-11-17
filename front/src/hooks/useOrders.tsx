@@ -1,26 +1,31 @@
 import { useState, useEffect } from 'react'
-import { Order, NewOrder } from '@types'
+import { Order, NewOrder, OrderEditForm } from '@types'
 import { useInitialContext } from '@hooks'
+import moment from 'moment'
 
 import {
   fetchOrders,
   addOrder,
-  deleteOrder
+  deleteOrder,
+  editOrder as clientEditOrder
 } from '@client'
 
 interface OrdersContext {
   loading: boolean,
   error: boolean,
   orders: Order[],
+  editOrder: OrderEditForm | null,
 
   onNewOrder: (newOrder: NewOrder) => void,
+  onEditOrder: (order: Order) => void,
   onConfirmDelete: () => void,
 
   isNewOrderDialog: boolean,
   isConfirmDialog: null | number,
 
   setNewOrderDialog: (set: boolean) => void,
-  setConfirmDialog: (set: null | number) => void
+  setConfirmDialog: (set: null | number) => void,
+  setEditOrderDialog: (set: null | Order) => void
 }
 
 export const useOrders = (): OrdersContext => {
@@ -28,6 +33,7 @@ export const useOrders = (): OrdersContext => {
   const [isNewOrderDialog, setStateNewOrderDialog] = useState(false)
   const [isConfirmDialog, setStateConfirmDialog] = useState<null | number>(null)
   const [orders, setOrders] = useState<Order[]>([])
+  const [editOrder, setEditOrder] = useState<OrderEditForm | null>(null)
 
   const getOrders = () => {
     fetchOrders()
@@ -57,15 +63,13 @@ export const useOrders = (): OrdersContext => {
       })
   }
 
-  /*
   const onEditOrder = (editingOrder: Order) => {
-    clientEdi(editingCustomer)
-      .then(customer => {
-        setCustomers(customers.map(i => i.id === customer.id ? customer : i))
-        setEditCustomer(null)
+    clientEditOrder(editingOrder)
+      .then(order => {
+        setOrders(orders.map(i => i.id === order.id ? order : i))
+        setEditOrder(null)
       })
   }
-  */
 
   const onConfirmDelete = () => {
     if (isConfirmDialog === null) {
@@ -85,25 +89,27 @@ export const useOrders = (): OrdersContext => {
 
   const setNewOrderDialog = (set: boolean) => setStateNewOrderDialog(set)
   const setConfirmDialog = (set: null | number) => setStateConfirmDialog(set)
-  /*
-  const setEditCustomerDialog = (set: null | Customer) => setEditCustomer(set !== null ? {
+  const setEditOrderDialog = (set: null | Order) => setEditOrder(set !== null ? {
     ...set,
-    age: set.age.toString()
+    startDate: moment(set.startDate),
+    endDate: moment(set.endDate)
   } : null)
-  */
 
   return {
     loading,
     error,
     orders,
+    editOrder,
 
     onNewOrder,
     onConfirmDelete,
+    onEditOrder,
 
     isNewOrderDialog,
     isConfirmDialog,
 
     setConfirmDialog,
-    setNewOrderDialog
+    setNewOrderDialog,
+    setEditOrderDialog
   }
 }
