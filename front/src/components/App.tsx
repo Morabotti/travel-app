@@ -12,6 +12,7 @@ import '@/index.less'
 const CustomersView = lazy(() => import('@components/customers/CustomersView'))
 const OrdersView = lazy(() => import('@components/orders/OrdersView'))
 const TravelsView = lazy(() => import('@components/travels/TravelsView'))
+const CustomerView = lazy(() => import('@components/customer/CustomerView'))
 
 const publicRoutes: PublicRoutes[] = [
   {
@@ -34,7 +35,12 @@ const publicRoutes: PublicRoutes[] = [
   }
 ]
 
-const privateRoutes: PrivateRoutes[] = []
+const privateRoutes: PrivateRoutes[] = [
+  {
+    path: '/customer/:id',
+    component: CustomerView
+  }
+]
 
 const routes = [...publicRoutes, ...privateRoutes]
 

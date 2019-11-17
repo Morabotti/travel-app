@@ -2,6 +2,7 @@ import React from 'react'
 import { Customer } from '@types'
 import { toLocalDate } from '@utils/dates'
 import { usePagination, filterPagination } from '@hooks'
+import { useHistory } from 'react-router'
 import { PaginationFooter } from '@components/common'
 import { PencilOutline, DeleteOutline, AccountOutline } from 'mdi-material-ui'
 import clsx from 'clsx'
@@ -51,6 +52,7 @@ const CustomerTable = ({
   setEditDialog
 }: Props) => {
   const { offset, limit, setOffset } = usePagination(15)
+  const { push } = useHistory()
   const classes = useStyles()
 
   return (
@@ -93,7 +95,7 @@ const CustomerTable = ({
                     <Tooltip title='View customer' placement='top'>
                       <IconButton
                         className={classes.small}
-                        onClick={() => {}}
+                        onClick={() => push(`/customer/${customer.id}`)}
                       >
                         <AccountOutline />
                       </IconButton>

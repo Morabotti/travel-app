@@ -11,9 +11,15 @@ export interface PublicRoutes {
 export type TravelType = 'culture' | 'trek' | 'sport' | 'beach' | 'city' | 'unknown'
 
 export interface PrivateRoutes {
-  name: string,
   path: string,
   component: LazyExoticComponent<FC>
+}
+
+export interface RequestContext {
+  loading: boolean,
+  error: boolean,
+  setLoading: (set: boolean) => void,
+  setError: (set: boolean) => void
 }
 
 export interface Customer {

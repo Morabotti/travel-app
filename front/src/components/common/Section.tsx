@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme =>
       justifyContent: 'space-between'
     },
     paper: {
-      padding: theme.spacing(1)
+      padding: theme.spacing(1),
+      marginBottom: theme.spacing(3)
     },
     header: {
       ...theme.typography.h4

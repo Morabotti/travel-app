@@ -6,6 +6,7 @@ import CustomTextField from './CustomTextField'
 import EmailTextField from './EmailTextField'
 import PaginationFooter from './PaginationFooter'
 import ConfirmDialog from './ConfirmDialog'
+import BackButton from './BackButton'
 
 export {
   Navigation,
@@ -15,5 +16,6 @@ export {
   CustomTextField,
   EmailTextField,
   PaginationFooter,
-  ConfirmDialog
+  ConfirmDialog,
+  BackButton
 }

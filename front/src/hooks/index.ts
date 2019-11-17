@@ -4,6 +4,7 @@ import { useTravels } from './useTravels'
 import { useDebounce } from './useDebounce'
 import { useValidation } from './useValidation'
 import { usePagination, filterPagination } from './usePagination'
+import { useCustomer } from './useCustomer'
 
 export {
   useInitialContext,
@@ -12,5 +13,6 @@ export {
   useDebounce,
   useValidation,
   usePagination,
-  filterPagination
+  filterPagination,
+  useCustomer
 }

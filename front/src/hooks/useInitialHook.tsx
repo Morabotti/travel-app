@@ -1,17 +1,10 @@
 import { useState } from 'react'
-
-interface InitialContext {
-  loading: boolean,
-  error: boolean,
-
-  setLoading: (set: boolean) => void,
-  setError: (set: boolean) => void
-}
+import { RequestContext } from '@types'
 
 export const useInitialContext = (
   initialError: boolean,
   initialLoading: boolean
-): InitialContext => {
+): RequestContext => {
   const [error, setStateError] = useState(initialError)
   const [loading, setStateLoading] = useState(initialLoading)
 
