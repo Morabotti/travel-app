@@ -6,6 +6,7 @@ import { useValidation } from './useValidation'
 import { usePagination } from './usePagination'
 import { useCustomer } from './useCustomer'
 import { useTravel } from './useTravel'
+import { useOrders } from './useOrders'
 
 export {
   useInitialContext,
@@ -15,5 +16,6 @@ export {
   useValidation,
   usePagination,
   useCustomer,
-  useTravel
+  useTravel,
+  useOrders
 }

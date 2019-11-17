@@ -1,4 +1,4 @@
-import { Customer, NewCustomer, Travel, NewTravel } from '@types'
+import { Customer, NewCustomer, Travel, NewTravel, NewOrder, Order } from '@types'
 
 const checkResponse = (res: Response): Response => {
   if (!res.ok) {
@@ -20,6 +20,62 @@ export const validateEmailOnServer = (
   .then(checkResponse)
   .then((res) => res.json())
 
+export const fetchOrders = (): Promise<Order[]> => fetch(
+  '/api/order',
+  {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }
+)
+  .then(checkResponse)
+  .then((res) => res.json())
+
+export const fetchOrder = (id: number): Promise<Order> => fetch(
+  `/api/order/${id}`,
+  {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }
+)
+  .then(checkResponse)
+  .then((res) => res.json())
+
+export const addOrder = (
+  order: NewOrder
+): Promise<Order> => fetch(
+  `/api/order`,
+  {
+    method: 'POST',
+    body: JSON.stringify(order),
+    headers: { 'Content-Type': 'application/json' }
+  }
+)
+  .then(checkResponse)
+  .then((res) => res.json())
+
+export const editOrder = (
+  travel: Travel
+): Promise<Travel> => fetch(
+  `/api/order`,
+  {
+    method: 'PUT',
+    body: JSON.stringify(travel),
+    headers: { 'Content-Type': 'application/json' }
+  }
+)
+  .then(checkResponse)
+  .then((res) => res.json())
+
+export const deleteOrder = (id: number): Promise<Response> => fetch(
+  `/api/order/${id}`,
+  {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }
+  }
+)
+  .then(checkResponse)
+
+// ! HEHEHH
 export const fetchTravels = (): Promise<Travel[]> => fetch(
   '/api/travel',
   {

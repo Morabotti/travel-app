@@ -1,9 +1,7 @@
 import React, { FC } from 'react'
 import { Section, ActionButton, ConfirmDialog } from '@components/common'
 import { useTravels } from '@hooks'
-import { BookmarkMultipleOutline } from 'mdi-material-ui'
 import { TravelTable, NewTravelDialog, EditTravelDialog } from '.'
-import { IconButton } from '@material-ui/core'
 
 const TravelsView: FC = () => {
   const {
@@ -22,17 +20,7 @@ const TravelsView: FC = () => {
 
   return (
     <div>
-      <Section
-        title='Travels'
-        loading={loading}
-        actions={
-          <>
-            <IconButton onClick={() => {}}>
-              <BookmarkMultipleOutline />
-            </IconButton>
-          </>
-        }
-      >
+      <Section title='Travels' loading={loading}>
         <TravelTable
           travels={travels}
           setConfirmDialog={setConfirmDialog}

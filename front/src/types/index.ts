@@ -1,5 +1,6 @@
 import { LazyExoticComponent, FC } from 'react'
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
+import { Moment } from 'moment'
 
 export interface PublicRoutes {
   name: string,
@@ -106,6 +107,22 @@ export interface TravelEditForm {
 
 export interface Order {
   id: number,
+  customer: Customer,
+  travel: Travel,
+  startDate: string,
+  endDate: string,
+  active: boolean
+}
+
+export interface OrderInnerForm {
+  customer: Customer | null,
+  travel: Travel | null,
+  startDate: Moment | null,
+  endDate: Moment | null,
+  active: boolean
+}
+
+export interface OrderForm {
   customer: Customer,
   travel: Travel,
   startDate: string,

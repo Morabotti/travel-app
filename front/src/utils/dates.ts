@@ -5,5 +5,5 @@ export const toLocalDate = (date: string) => {
 }
 
 export const toMappedDate = (date: string) => {
-  return moment(date).format('YYYY-MM-DD HH:MI:SS')
+  return moment(date).format('YYYY-MM-DD HH:MM:SS')
 }

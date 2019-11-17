@@ -1,10 +1,32 @@
-import { CustomerForm, CustomerEditForm } from '@types'
+import { CustomerForm, CustomerEditForm, OrderInnerForm } from '@types'
 import * as Yup from 'yup'
 
 export const validateEmail = (email: string): boolean => {
   // eslint-disable-next-line no-useless-escape
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return !re.test(email)
+}
+
+export const orderValidation = (data: OrderInnerForm) => {
+  const errors: Record<string, string> = {}
+
+  if (data.customer === null) {
+    errors.customer = 'Customer is required'
+  }
+
+  if (data.travel === null) {
+    errors.travel = 'Travel is required'
+  }
+
+  if (data.startDate === null) {
+    errors.startDate = 'Starting date is required'
+  }
+
+  if (data.endDate === null) {
+    errors.endDate = 'Ending date is required'
+  }
+
+  return errors
 }
 
 export const validateCustomer = (data: CustomerForm | CustomerEditForm) => {
