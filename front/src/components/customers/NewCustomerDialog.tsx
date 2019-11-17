@@ -1,7 +1,7 @@
 import React from 'react'
 import { CustomerForm, NewCustomer } from '@types'
 import { CustomTextField, EmailTextField } from '@components/common'
-import { validateNewCustomer, validateEmail } from '@utils/validation'
+import { validateCustomer, validateEmail } from '@utils/validation'
 import { validateEmailOnServer } from '@client'
 import { useValidation } from '@hooks'
 import { Formik, Form } from 'formik'
@@ -125,7 +125,7 @@ const NewCustomerDialog = ({
         <Formik
           initialValues={initialValues}
           onSubmit={onCustomerSubmit}
-          validate={validateNewCustomer}
+          validate={validateCustomer}
         >
           {() => (
             <Form>

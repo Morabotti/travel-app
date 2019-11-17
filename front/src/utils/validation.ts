@@ -1,4 +1,4 @@
-import { CustomerForm } from '@types'
+import { CustomerForm, CustomerEditForm } from '@types'
 
 export const validateEmail = (email: string): boolean => {
   // eslint-disable-next-line no-useless-escape
@@ -6,7 +6,7 @@ export const validateEmail = (email: string): boolean => {
   return !re.test(email)
 }
 
-export const validateNewCustomer = (data: CustomerForm) => {
+export const validateCustomer = (data: CustomerForm | CustomerEditForm) => {
   const errors: Record<string, string> = {}
 
   if (data.firstName !== '') {

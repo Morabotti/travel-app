@@ -7,3 +7,23 @@ html {
   font-family: 'Roboto', sans-serif;
   margin: 0;
 }
+
+.contains-inv-actions{
+  cursor: pointer;
+
+  .actions{
+    display: flex;
+  }
+
+  .inv-actions{
+    transition: opacity 75ms;
+    opacity: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8px;
+  }
+
+  &:hover .inv-actions{
+    opacity: 1;
+  }
+}

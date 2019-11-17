@@ -7,6 +7,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { AccountMultiple, BullseyeArrow, ClipboardList } from 'mdi-material-ui'
 import { hot } from 'react-hot-loader'
 
+import '@/index.less'
+
 const CustomersView = lazy(() => import('@components/customers/CustomersView'))
 const OrdersView = lazy(() => import('@components/orders/OrdersView'))
 const TravelsView = lazy(() => import('@components/travels/TravelsView'))

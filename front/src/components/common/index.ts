@@ -4,6 +4,8 @@ import Section from './Section'
 import ActionButton from './ActionButton'
 import CustomTextField from './CustomTextField'
 import EmailTextField from './EmailTextField'
+import PaginationFooter from './PaginationFooter'
+import ConfirmDialog from './ConfirmDialog'
 
 export {
   Navigation,
@@ -11,5 +13,7 @@ export {
   Section,
   ActionButton,
   CustomTextField,
-  EmailTextField
+  EmailTextField,
+  PaginationFooter,
+  ConfirmDialog
 }
