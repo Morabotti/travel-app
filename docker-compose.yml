@@ -1,13 +1,13 @@
-version: '3'
+version: '3.1'
 
 services:
-  mariadb:
-    image: mariadb:10.4.8
-    environment:
-      - "MYSQL_DATABASE=travelapp"
+  db:
+    image: mariadb:latest
     ports:
       - 3306:3306
-    volumes:
-      - travelapp:/var/lib/mysql
-volumes:
-  travelapp:
+    network_mode: "host"
+    environment:
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=travelapp

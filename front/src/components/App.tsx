@@ -3,7 +3,7 @@ import theme from '@theme'
 import { Navigation, SuspenseLoader } from '@components/common'
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core'
 import { PublicRoutes, PrivateRoutes } from '@types'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { AccountMultiple, BullseyeArrow, ClipboardList } from 'mdi-material-ui'
 import { hot } from 'react-hot-loader'
 
@@ -59,6 +59,7 @@ const App: FC = () => (
       <Navigation routes={publicRoutes}>
         <Suspense fallback={<SuspenseLoader />}>
           <Switch>
+            <Redirect to='/customers' />
             {routes.map(route => (
               <Route key={route.path} path={route.path}>
                 <route.component />

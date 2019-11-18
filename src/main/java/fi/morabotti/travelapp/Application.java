@@ -90,7 +90,7 @@ public class Application extends fi.jubic.snoozy.Application {
                     )
             );
         }
-         */
+        */
 
         startupScheduler.start();
 
