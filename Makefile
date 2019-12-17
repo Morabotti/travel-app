@@ -1,3 +1,12 @@
+SHELL := /bin/bash
+
+ENV_PARAMS := \
+	DEPLOYMENT_ENVIRONMENT=development \
+	JOOQ_URL=jdbc:mysql://localhost:3306/travelapp \
+	JOOQ_USER=test \
+	JOOQ_PASSWORD=test \
+	JOOQ_DIALECT=MARIADB
+
 LOCAL_DB_NAME = travel-app-db
 
 jooq-classes:

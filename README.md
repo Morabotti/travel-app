@@ -40,5 +40,5 @@ If you want to use **MySQL** instead **MariaDB**, you can change `JOOQ_DIALECT` 
 For other databases, check [JOOQ SQL DIALECTS](https://www.jooq.org/javadoc/latest/org.jooq/org/jooq/SQLDialect.html) for more information.
 
 ## ER Diagram:
-TODO
 
+![ER Diagram](./graphics/er_diagram.png)
