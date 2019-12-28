@@ -84,6 +84,9 @@
             <column name="active" type="boolean" defaultValueBoolean="1">
                 <constraints />
             </column>
+            <column name="extra_info" type="varchar(255)" defaultValue="">
+                <constraints nullable="true" />
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

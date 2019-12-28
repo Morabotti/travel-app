@@ -26,7 +26,7 @@
             travel_type="sport"
     />
 
-    <orders customer_id="1" travel_id="2" start_date="2019-10-05 00:00:10" end_date="2019-10-08 00:00:10" active="true" />
-    <orders customer_id="1" travel_id="1" start_date="2019-10-07 00:00:11" end_date="2019-10-11 00:00:10" active="true" />
+    <orders customer_id="1" travel_id="2" start_date="2019-10-05 00:00:10" end_date="2019-10-08 00:00:10" active="true" extra_info="asdsadsd" />
+    <orders customer_id="1" travel_id="1" start_date="2019-10-07 00:00:11" end_date="2019-10-11 00:00:10" active="true" extra_info="Very good extra info" />
     <orders customer_id="2" travel_id="1" start_date="2019-10-09 00:00:12" end_date="2019-10-12 00:00:10" active="false" />
 </dataset>

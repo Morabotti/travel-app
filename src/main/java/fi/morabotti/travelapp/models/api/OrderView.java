@@ -31,6 +31,10 @@ public abstract class OrderView {
     @Nullable
     public abstract Boolean active();
 
+    @EasyProperty
+    @Nullable
+    public abstract String extraInfo();
+
     public static Builder builder() { return new Builder(); }
 
     public abstract Builder toBuilder();

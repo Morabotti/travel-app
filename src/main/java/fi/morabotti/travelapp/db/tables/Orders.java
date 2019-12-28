@@ -42,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Orders extends TableImpl<OrdersRecord> {
 
-    private static final long serialVersionUID = -1309039417;
+    private static final long serialVersionUID = 1201432173;
 
     /**
      * The reference instance of <code>travelapp.orders</code>
@@ -86,6 +86,11 @@ public class Orders extends TableImpl<OrdersRecord> {
      * The column <code>travelapp.orders.active</code>.
      */
     public final TableField<OrdersRecord, Boolean> ACTIVE = createField("active", org.jooq.impl.SQLDataType.BIT.defaultValue(org.jooq.impl.DSL.inline("b'0'", org.jooq.impl.SQLDataType.BIT)), this, "");
+
+    /**
+     * The column <code>travelapp.orders.extra_info</code>.
+     */
+    public final TableField<OrdersRecord, String> EXTRA_INFO = createField("extra_info", org.jooq.impl.SQLDataType.VARCHAR(255).defaultValue(org.jooq.impl.DSL.inline("", org.jooq.impl.SQLDataType.VARCHAR)), this, "");
 
     /**
      * Create a <code>travelapp.orders</code> table reference

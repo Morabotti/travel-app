@@ -5,7 +5,7 @@ import MomentUtils from '@date-io/moment'
 import { MuiPickersUtilsProvider, DateTimePicker } from '@material-ui/pickers'
 import { DialogButton, CustomerDialog, TravelDialog } from '.'
 import { orderValidation } from '@utils/validation'
-import { CustomCheckBox } from '@components/common'
+import { CustomCheckBox, CustomTextField } from '@components/common'
 import moment from 'moment'
 
 import {
@@ -48,7 +48,8 @@ const initialValues: OrderInnerForm = {
   travel: null,
   startDate: moment(),
   endDate: moment().add(7, 'day'),
-  active: true
+  active: true,
+  extraInfo: ''
 }
 
 const NewOrderDialog = ({
@@ -77,7 +78,8 @@ const NewOrderDialog = ({
       startDate: data.startDate.format('YYYY-MM-DD HH:MM:SS'),
       endDate: data.endDate.format('YYYY-MM-DD HH:MM:SS'),
       customer: (data.customer as Customer),
-      travel: (data.travel as Travel)
+      travel: (data.travel as Travel),
+      extraInfo: data.extraInfo === '' ? null : data.extraInfo
     }
 
     onSubmit(newOrder)
@@ -183,6 +185,13 @@ const NewOrderDialog = ({
                     />
                   </Grid>
                 </Grid>
+                <CustomTextField
+                  className={classes.double}
+                  label='Extra info'
+                  name='extraInfo'
+                  multiline
+                  type='input'
+                />
                 <CustomCheckBox
                   label='Is order active'
                   name='active'

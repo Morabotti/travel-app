@@ -1,4 +1,4 @@
-import { LazyExoticComponent, FC } from 'react'
+import { FC, LazyExoticComponent } from 'react'
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import { Moment } from 'moment'
 
@@ -111,7 +111,8 @@ export interface Order {
   travel: Travel,
   startDate: string,
   endDate: string,
-  active: boolean
+  active: boolean,
+  extraInfo: null | string
 }
 
 export interface OrderInnerForm {
@@ -119,7 +120,8 @@ export interface OrderInnerForm {
   travel: Travel | null,
   startDate: Moment | null,
   endDate: Moment | null,
-  active: boolean
+  active: boolean,
+  extraInfo: null | string
 }
 
 export interface OrderForm {
@@ -127,7 +129,8 @@ export interface OrderForm {
   travel: Travel,
   startDate: string,
   endDate: string,
-  active: boolean
+  active: boolean,
+  extraInfo: null | string
 }
 
 export interface OrderEditForm {
@@ -136,7 +139,8 @@ export interface OrderEditForm {
   travel: Travel,
   startDate: Moment,
   endDate: Moment,
-  active: boolean
+  active: boolean,
+  extraInfo: null | string
 }
 
 export interface OrderEditInnerForm {
@@ -145,7 +149,8 @@ export interface OrderEditInnerForm {
   travel: Travel | null,
   startDate: Moment | null,
   endDate: Moment | null,
-  active: boolean
+  active: boolean,
+  extraInfo: null | string
 }
 
 export interface NewOrder {
@@ -153,5 +158,6 @@ export interface NewOrder {
   travel: Travel,
   startDate: string,
   endDate: string,
-  active: boolean
+  active: boolean,
+  extraInfo: null | string
 }

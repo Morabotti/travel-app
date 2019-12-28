@@ -33,4 +33,5 @@
         travel_id CDATA #REQUIRED
         start_date CDATA #REQUIRED
         end_date CDATA #REQUIRED
+        extra_info CDATA #IMPLIED
         active CDATA #IMPLIED>

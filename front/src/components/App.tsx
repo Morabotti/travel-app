@@ -59,12 +59,12 @@ const App: FC = () => (
       <Navigation routes={publicRoutes}>
         <Suspense fallback={<SuspenseLoader />}>
           <Switch>
-            <Redirect to='/customers' />
             {routes.map(route => (
               <Route key={route.path} path={route.path}>
                 <route.component />
               </Route>
             ))}
+            <Redirect to='/customers' />
           </Switch>
         </Suspense>
       </Navigation>

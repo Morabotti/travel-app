@@ -76,6 +76,12 @@ const CustomerDetails = ({
         <Grid item xs={10}>
           <T>{toLocalDate(order.endDate)}</T>
         </Grid>
+        <Grid item xs={2}>
+          <T className={classes.key}>Extra info</T>
+        </Grid>
+        <Grid item xs={10}>
+          <T>{order.extraInfo === null ? 'Not set!' : order.extraInfo}</T>
+        </Grid>
       </Grid>
     </div>
   )

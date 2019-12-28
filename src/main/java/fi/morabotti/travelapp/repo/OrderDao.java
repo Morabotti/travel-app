@@ -105,6 +105,7 @@ public class OrderDao {
                 .set(ORDERS.START_DATE, orderMapping.startDate())
                 .set(ORDERS.END_DATE, orderMapping.endDate())
                 .set(ORDERS.ACTIVE, orderMapping.active())
+                .set(ORDERS.EXTRA_INFO, orderMapping.extraInfo())
                 .where(ORDERS.ID.equal(orderMapping.id()))
                 .execute() > 0;
 
@@ -162,6 +163,7 @@ public class OrderDao {
                         .setStartDate(record.getValue(ORDERS.START_DATE).toString())
                         .setEndDate(record.getValue(ORDERS.END_DATE).toString())
                         .setActive(record.getValue(ORDERS.ACTIVE))
+                        .setExtraInfo(record.getValue(ORDERS.EXTRA_INFO))
                         .setCustomer(
                                 CustomerView.builder()
                                         .setId(record.getValue(CUSTOMERS.ID))
@@ -202,6 +204,7 @@ public class OrderDao {
                         .setActive(record.getValue(ORDERS.ACTIVE))
                         .setCustomerId(record.getValue(ORDERS.CUSTOMER_ID))
                         .setTravelId(record.getValue(ORDERS.TRAVEL_ID))
+                        .setExtraInfo(record.getValue(ORDERS.EXTRA_INFO))
                         .build()
         );
     }

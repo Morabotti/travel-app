@@ -1,7 +1,6 @@
 import React, { useState, ReactNode } from 'react'
 import { Menu } from 'mdi-material-ui'
-import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router'
+import { useLocation, useHistory } from 'react-router'
 import clsx from 'clsx'
 import { PublicRoutes } from '@types'
 
@@ -86,7 +85,8 @@ interface Props {
 
 const Navigation = ({ children, routes }: Props) => {
   const [active, setActive] = useState(true)
-  const location = useLocation()
+  const { push } = useHistory()
+  const { pathname } = useLocation()
   const classes = useStyles()
 
   return (
@@ -127,10 +127,9 @@ const Navigation = ({ children, routes }: Props) => {
             <ListItem
               key={route.path}
               classes={{ selected: classes.drawerSelect }}
-              component={Link}
               button
-              to={route.path}
-              selected={location.pathname === route.path}
+              onClick={() => push(route.path)}
+              selected={pathname === route.path}
             >
               <ListItemIcon>
                 <route.icon className={classes.icon} />

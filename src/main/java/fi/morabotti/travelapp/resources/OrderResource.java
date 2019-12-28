@@ -71,6 +71,7 @@ public class OrderResource {
                 .setActive(orderView.active())
                 .setCustomerId(orderView.customer().id())
                 .setTravelId(orderView.travel().id())
+                .setExtraInfo(orderView.extraInfo())
                 .build();
     }
 }

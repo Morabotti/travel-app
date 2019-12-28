@@ -26,6 +26,10 @@ export const orderValidation = (data: OrderInnerForm) => {
     errors.endDate = 'Ending date is required'
   }
 
+  if (data.extraInfo && data.extraInfo.length >= 254) {
+    errors.extraInfo = 'Extra info is too long'
+  }
+
   return errors
 }
 
