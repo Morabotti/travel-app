@@ -10,8 +10,9 @@ RUN cd /opt/build \
   && mvn dependency:copy-dependencies dependency:resolve dependency:resolve-plugins dependency:go-offline -B
 
 COPY front/package.json /opt/build/front/
+COPY front/package-lock.json /opt/build/front/
 RUN cd /opt/build/front \
-  && npm install
+  && npm ci
 
 COPY ./ /opt/build/
 
