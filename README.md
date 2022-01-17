@@ -38,7 +38,3 @@ Make sure that you have empty database defined by `JOOQ_URL` (in this case: `tra
 If you want to use **MySQL** instead **MariaDB**, you can change `JOOQ_DIALECT` from `MARIADB` to `MYSQL`.
 
 For other databases, check [JOOQ SQL DIALECTS](https://www.jooq.org/javadoc/latest/org.jooq/org/jooq/SQLDialect.html) for more information.
-
-## ER Diagram:
-
-![ER Diagram](./graphics/er_diagram.png)
